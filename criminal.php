@@ -84,17 +84,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   if ($action == "total_count") {
-    $sql = "SELECT COUNT(*) AS Total_Count FROM criminal";
-    $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-     $totalCount = "Total number of criminals: " . $row['Total_Count'];
+    // Fetch all records (like show_all)
+    $sql2 = "SELECT * FROM criminal";
+    $result2 = $conn->query($sql2);
+
+    if ($result2 && $result2->num_rows > 0) {
+      $search_results = $result2->fetch_all(MYSQLI_ASSOC); // For search table
     }
 
+    // Fetch total count
+    $sql = "SELECT COUNT(*) AS Total_Count FROM criminal";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+      $totalCount = "Total number of criminals: " . $row['Total_Count']; // For count table
+    }
   }
 
+
+
   if ($action == "Juvenile_Offenders") {
-    $sql = "SELECT * FROM criminal where YEAR(age)>2006";
+    $sql = "SELECT * FROM criminal WHERE TIMESTAMPDIFF(YEAR, age, CURDATE()) < 18";
     $result = $conn->query($sql);
     if ($result && $result->num_rows > 0) {
       $search_results = $result->fetch_all(MYSQLI_ASSOC);
@@ -113,10 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sql = "SELECT * FROM criminal ORDER BY age ASC";
     } elseif ($filter == "crime") {
       $sql = "SELECT * FROM criminal ORDER BY crime_id ASC";
-    } else {
-      $sql = "SELECT * FROM criminal"; // default fallback
-    }
-
+    } 
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -280,18 +288,18 @@ $conn->close();
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($search_results as $row): ?>
-                <tr>
-                  
-                  <td class="result_th"><?= htmlspecialchars($row['criminal_id']) ?></td>
-                  <td class="result_th"><?= htmlspecialchars($row['name']) ?></td>
-                  <td class="result_th"><?= htmlspecialchars($row['age']) ?></td>
-                  <td class="result_th"><?= htmlspecialchars($row['crime_id']) ?></td>
-                </tr>
-              <?php endforeach; ?>
+            <?php foreach ($search_results as $row): ?>
+              <tr>
+                <td class="result_th"><?= htmlspecialchars($row['criminal_id'] ?? 'N/A') ?></td>
+                <td class="result_th"><?= htmlspecialchars($row['name'] ?? 'N/A') ?></td>
+                <td class="result_th"><?= htmlspecialchars($row['age'] ?? 'N/A') ?></td>
+                <td class="result_th"><?= htmlspecialchars($row['crime_id'] ?? 'N/A') ?></td>
+              </tr>
+            <?php endforeach; ?>
+
             </tbody>
           </table>
-  
+
       <?php endif; ?>
 
       <?php if (isset($totalCount)): ?>
