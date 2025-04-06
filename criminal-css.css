@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #e9ecef;
+  margin: 0;
+  padding: 20px;
+}
+
+#container {
+  max-width: 80vw;
+  background-color: #ffffff;
+  padding: 20px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#center-msg {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+}
+
+#center-heading {
+  text-align: center;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.crudBtnDiv {
+  width: 77vw;
+  display: flex;
+}
+
+.box {
+  width: 33.33%;
+  height: 45vh;
+  border-bottom: 2px solid #1b682d;
+  border-left: 2px solid #1b682d;
+  padding: 10px;
+}
+
+.label1 {
+  display: inline-block;
+  width: 7vw;
+}
+
+.crudBtn {
+  height: 6vh;
+  width: 10vw;
+  margin-left: 35%;
+  background-color: #28a745;
+  border-radius: 10px;
+  border: 1px solid #28a745;
+}
+
+.crudBtn:hover {
+  background-color: #1b682d;
+}
+
+#searchBox {
+  margin: auto;
+  margin-top: 5vh;
+  margin-left: 8vw;
+  width: 60vw;
+  height: 7.9vh;
+  border-radius: 5px;
+  border: 1px solid #28a745;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 10px;
+  transition: border-color 0.3s;
+}
+
+#searchBox:focus {
+  border-color: #1b682d;
+  outline: none;
+}
+
+i {
+  border-radius: 5px;
+  border: 1px solid #28a745;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 10px;
+  margin-left: 3px;
+  background-color: #28a745;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+i:hover {
+  background-color: #1b682d;
+  transform: translateY(-2px);
+}
+
+.filter {
+  margin: 4px;
+  border: 1px solid #28a745;
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+  transition: border-color 0.3s;
+}
+
+.filter:hover {
+  border: 2px solid #1b682d;
+}
+
+.filter:active,
+.filter:focus {
+  border: 2px solid #1b682d;
+  outline: none;
+}
+
+.show-list {
+  margin: 4px;
+  border: 1px solid #28a745;
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+  transition: border-color 0.3s;
+  background-color: transparent;
+}
+
+.show-list:hover {
+  border: 2px solid #1b682d;
+}
+
+.show-list:active,
+.show-list:focus {
+  border: 2px solid #1b682d;
+  outline: none;
+}
