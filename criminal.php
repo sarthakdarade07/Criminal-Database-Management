@@ -83,6 +83,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
+  if ($action == "Former_inmates") {
+    $sql = "SELECT * FROM former_criminals";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+      $search_results = $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+      $message = "No matching records found.";
+    }
+  }
+
   if ($action == "total_count") {
     // Fetch all records (like show_all)
     $sql2 = "SELECT * FROM criminal";
