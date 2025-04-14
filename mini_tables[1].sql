@@ -106,3 +106,22 @@ CREATE TABLE Login (
     id VARCHAR(50) PRIMARY KEY,
     password VARCHAR(255)
 );
+
+--create former ciminal table
+create table former_criminals(
+    criminal_id varchar (10),
+    name varchar(100);
+    age date;
+    crime_id varchar (100)
+);
+
+
+--trigger for former criminals
+delimiter #
+create trigger former_cri  before delete
+    on criminal
+    for each row
+    insert into former_criminals values(old.criminal_id,old.name,old.age,old.crime_id);
+    end;
+    #
+    delimiter ;
