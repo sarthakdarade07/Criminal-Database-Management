@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criminal Record Management - Menu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        .menu-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Criminal Record Management System</h1>
+    <div class="menu-container">
+        <div class="menu-item"><a href="criminal.php">Criminal</a></div>
+        <div class="menu-item"><a href="victim.php">Victim</a></div>
+        <div class="menu-item"><a href="crime_record.php">Crime Record</a></div>
+        <div class="menu-item"><a href="police.php">Police</a></div>
+        <div class="menu-item"><a href="cases.php">Case Details</a></div>
+        <div class="menu-item"><a href="court_hearing.php">Court Hearing</a></div>
+        <div class="menu-item"><a href="evidences.php">Evidence</a></div>
+        <div class="menu-item"><a href="jail.php">Jail</a></div>
+        <div class="menu-item"><a href="lawyer.php">Lawyer</a></div>
+        <div class="menu-item"><a href="visitors.php">Visitors</a></div>
+        <div class="menu-item"><a href="biometric.php">Biometric</a></div>
+        <div class="menu-item"><a href="login_admistration.php">Login</a></div>
+    </div>
+</body>
+</html>

@@ -6,7 +6,9 @@ USE criminal;
 CREATE TABLE Criminal (
     criminal_id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(100),
-    age DATE
+    age DATE.
+    crime_id varchar(10).
+    FOREIGN KEY (crime_id) REFERENCES Crime_Record(crime_id)
 );
 
 -- Create Victim table
@@ -99,6 +101,7 @@ CREATE TABLE Biometric (
     b_date DATE,
     criminal_id VARCHAR(10),
     FOREIGN KEY (criminal_id) REFERENCES Criminal(criminal_id) ON DELETE CASCADE
+    image_path VARCHAR(255),
 );
 
 -- Create Login table
@@ -125,3 +128,30 @@ create trigger former_cri  before delete
     end;
     #
     delimiter ;
+
+
+    --procedure for entering crime record
+    DELIMITER //
+
+CREATE PROCEDURE AddCrimeRecord(
+  IN p_crime_id VARCHAR(10),
+  IN p_criminal_id VARCHAR(10),
+  IN p_crime_type VARCHAR(100),
+  IN p_crime_date DATE,
+  IN p_victim_id VARCHAR(10)
+)
+BEGIN
+  -- Check if referenced criminal and victim exist
+  IF EXISTS (SELECT 1 FROM Criminal WHERE criminal_id = p_criminal_id)
+     AND EXISTS (SELECT 1 FROM Victim WHERE victim_id = p_victim_id) THEN
+
+    INSERT INTO Crime_Record (crime_id, criminal_id, crime_type, crime_date, victim_id)
+    VALUES (p_crime_id, p_criminal_id, p_crime_type, p_crime_date, p_victim_id);
+
+  ELSE
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Criminal ID or Victim ID does not exist.';
+  END IF;
+END //
+
+DELIMITER ;

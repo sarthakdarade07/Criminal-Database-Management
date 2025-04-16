@@ -27,7 +27,7 @@ $result = $stmt->get_result();
 if ($result->num_rows == 1) {
     // Successful login
     $_SESSION['user'] = $login_id;
-    header("Location: criminal.php");
+    header("Location:menu.html");
     exit();
 } else {
     // Failed login
