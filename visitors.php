@@ -277,7 +277,7 @@ $conn->close();
       <form action="" class="search-form" method="post" style="margin-top: -5px;">
         <button type="submit" name="action" value="show_all" class="show-list"> Show All </button>
         <button type="submit" name="action" value="recent_visitors" class="show-list">Recent Visitor</button>
-        <button type="submit" name="action" value="total_count" class="show-list">Total Count of Criminal</button>
+        <button type="submit" name="action" value="total_count" class="show-list">Total Count of Visitors</button>
         <button type="submit" name="action" class="show-list" value="today_visitors">Today's Visitor</button>
 
 
